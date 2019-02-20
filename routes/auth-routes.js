@@ -13,7 +13,7 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 authRoutes.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
+  res.render("auth/signup", {hideNavBar: true, show: 'show'});
 });
 
 authRoutes.post("/signup", (req, res, next) => {
@@ -42,7 +42,7 @@ authRoutes.post("/signup", (req, res, next) => {
 
     newUser.save((err) => {
       if (err) {
-        res.render("auth/signup", { message: "Something went wrong" });
+        res.render("auth/signup", { message: "Something went wrong"});
       } else {
         res.redirect("/");
       }
@@ -54,7 +54,7 @@ authRoutes.post("/signup", (req, res, next) => {
 });
 
 authRoutes.get("/login", (req, res, next) => {
-  res.render("auth/login", { "message": req.flash("error") });
+  res.render("auth/login", { "message": req.flash("error"), hideNavBar: true, show:'show'});
 });
 
 authRoutes.post("/login", passport.authenticate("local", {
@@ -75,7 +75,7 @@ authRoutes.get("/logout", (req, res) => {
 
 authRoutes.get("/home", (req, res, next) => {
   if (req.user) {
-    res.render('home', { user: req.user });
+    res.render('home', { user: req.user});
   } else {
       res.redirect('/login');
   }
