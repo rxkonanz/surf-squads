@@ -7,6 +7,22 @@ a {
   color: #00B7FF;
 }
 
+// NAVBAR STYLING
+nav {
+  background-color: #354152;
+  color: white;
+}
+.carousel-item {
+  height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+// END OF NAVBAR STYLING
+
 // LOG IN & SIGN UP STYLING
 $base-bgcolor: #354152;
 $base-color: #7e8ba3;
@@ -120,6 +136,7 @@ a {
 
 .login {
   background-color: white;
+  border-radius: 8px;
   box-shadow: 0 0 250px #000;
   text-align: center;
   padding: 4rem 2rem;
@@ -159,4 +176,13 @@ a {
   margin-bottom: 15px;
   width: 120px;
 }
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
 // END OF LOGIN & SIGNUP STYLING
+
+// GENERAL PAGE STYLING
+.pg-content {
+  margin-top: 20px;
+}

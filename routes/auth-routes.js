@@ -21,14 +21,14 @@ authRoutes.post("/signup", (req, res, next) => {
   const password = req.body.password;
 
   if (username === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate username and password" });
+    res.render("auth/signup", { message: "No empty fields allowed!" });
     return;
   }
 
   User.findOne({ username })
   .then(user => {
     if (user !== null) {
-      res.render("auth/signup", { message: "The username already exists" });
+      res.render("auth/signup", { message: "The username already exists", show: 'show', hideNavBar: true});
       return;
     }
 
@@ -42,7 +42,7 @@ authRoutes.post("/signup", (req, res, next) => {
 
     newUser.save((err) => {
       if (err) {
-        res.render("auth/signup", { message: "Something went wrong"});
+        res.render("auth/signup", { message: "Something went wrong", show: 'show'});
       } else {
         res.redirect("/");
       }

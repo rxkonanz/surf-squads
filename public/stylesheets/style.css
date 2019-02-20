@@ -5,6 +5,19 @@ body {
 a {
   color: #00B7FF; }
 
+nav {
+  background-color: #354152;
+  color: white; }
+
+.carousel-item {
+  height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
 * {
   box-sizing: border-box; }
 
@@ -69,6 +82,7 @@ a {
 
 .login {
   background-color: white;
+  border-radius: 8px;
   box-shadow: 0 0 250px #000;
   text-align: center;
   padding: 4rem 2rem; }
@@ -96,5 +110,12 @@ a {
   height: 120px;
   margin-bottom: 15px;
   width: 120px; }
+
+.error-message {
+  color: red;
+  margin-bottom: 10px; }
+
+.pg-content {
+  margin-top: 20px; }
 
 /*# sourceMappingURL=style.css.map */
