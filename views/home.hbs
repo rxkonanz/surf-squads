@@ -1,6 +1,24 @@
-<div class="pg-content">
-  <h1>Sick, Welcome Brah!</h1>
+<div class="container">
+  {{!-- <h3 id="home-title">Sick, Welcome Brah {{user.username}}!</h3> --}}
+  <a href="/new-trip"><div class="add-trip" height="40">
+    <img src="images/add.png" height="40" width="40">
+    <div class="add-trip-text" height="40">
+      <p id="add-trip-button-text">Add a Trip</p>
+    </div>
+  </div></a>
+  <h1 class="homepage-title">Join a Squad:</h1>
+  <div class="row">
+    {{#each currentTrips}}
+      <div class="col-lg-4 col-md-6 col-xs-12">
+          <a href="trips/{{this.id}}" class="trip-link-home"><img src="{{this.picture}}" class="trip-overview-image">
+          <p class="trip-title-home">{{this.title}}</p></a>
+          <p class="trip-level-home"><b>Level: {{this.difficulty}}</b></p>
+      </div>
+    {{/each}}
+  </div>
+
   <form action="/logout" method="GET">
-    <input type="submit" value="Log Out">
+    <button type="submit">Log Out</button>
   </form>
+
 </div>

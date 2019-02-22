@@ -1,0 +1,50 @@
+<div class="new-trip-container">
+  <h1 id="new-trip-title">Create a New Trip</h1>
+
+  <form class="new-trip-form" action="/new-trip" method="POST">
+    <div class="group">      
+      <input name="tripName" type="text" class="fancy-input" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Trip Name</label>
+    </div>
+      
+    <div class="group">      
+      <input name="location" type="text" class="fancy-input" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Location</label>
+    </div>
+
+    <div class="group">      
+      <input name="description" type="text" class="fancy-input" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Description</label>
+    </div>
+
+    <div class="group">      
+      <input name="difficulty" type="text" class="fancy-input" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Difficulty</label>
+    </div>
+
+    <div class="group">      
+      <input name="imageLink" type="text" class="fancy-input" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Image Link</label>
+    </div>
+    <button type="submit">Create</button>
+  </form>
+</div>
+
+    {{!-- <h6>Trip Title:</h6>
+    <input type="text" placeholder="name">
+    <h6>Location:</h6>
+    <input type="text" placeholder="location">
+    <h6>Picture Link:</h6>
+    <input type="text" placeholder="link">
+    <h6>Difficulty:</h6>
+    <input type="text" placeholder="difficulty"> --}}

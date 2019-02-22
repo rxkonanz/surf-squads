@@ -12,6 +12,7 @@ nav {
   background-color: #354152;
   color: white;
 }
+
 .carousel-item {
   height: 100vh;
   min-height: 350px;
@@ -142,7 +143,7 @@ a {
   padding: 4rem 2rem;
 
   input {
-    border: 0.5px solid #242c37;
+    border: 0.5px solid #CCCCCC;
     border-radius: 999px;
     background-color: transparent;
     text-align: center;
@@ -182,7 +183,158 @@ a {
 }
 // END OF LOGIN & SIGNUP STYLING
 
-// GENERAL PAGE STYLING
-.pg-content {
+// HOME PAGE STYLING
+.homepage-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.add-trip {
+  display: flex;
   margin-top: 20px;
 }
+#add-trip-button-text {
+  color: black;
+  font-weight: 500;
+  padding: 8px 0 8px 5px;
+}
+.trip-title-home {
+  margin-bottom: 0;
+}
+.col-lg-4 {
+  margin-bottom: 20px;
+}
+.trip-overview-image {
+  height: 200px;
+  width: 100%;
+}
+.trip-title-home, .trip-level-home {
+  text-align: center;
+}
+.trip-link-home:hover {
+  opacity: 0.8;
+}
+// END HOMEPAGE STYLING
+
+// START TRIP PAGE STYLING
+.trip-title {
+  font-weight: 200;
+  margin-top: 20px;
+  text-align: center;
+}
+.trip-container {
+  text-align: center;
+}
+.trip-page-image {
+  height: auto;
+  width: 60%;
+}
+.trip-page-info {
+  margin: auto;
+  text-align: left;
+  width: 60%;
+}
+// END TRIP PAGE STYLING
+
+// START NEW TRIP PAGE STYLING
+.new-trip-container {
+  margin: auto;
+  width: 60%;
+}
+#new-trip-title {
+  margin: 25px 0 35px 0;
+}
+.group { 
+  position:relative; 
+  margin-bottom:45px; 
+}
+input {
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:600px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus { outline:none; }
+
+/* LABEL ======================================= */
+label {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:100%; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:600px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+.fancy-input {
+  width: 100%;
+}
+// END NEW TRIP PAGE STYLNG
