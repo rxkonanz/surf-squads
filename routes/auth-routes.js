@@ -103,9 +103,9 @@ authRoutes.get('/new-trip', (req, res, next) => {
   res.render('new-trip');
 });
 
-authRoutes.post('/new-trip', (req, res, next) => {
+authRoutes.post('/new-trip', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   console.log(req.body);
-  Trip.create({title: req.body.tripName, location: req.body.location, description: req.body.description, picture: req.body.imageLink, creator: "robkonanz@gmail.com", difficulty: req.body.difficulty})
+  Trip.create({title: req.body.tripName, location: req.body.location, description: req.body.description, picture: req.body.imageLink, creator: req.user.username, difficulty: req.body.difficulty})
   .then(idk => {
     console.log("Inserted Successfully.");
     res.redirect('/home');
@@ -115,8 +115,7 @@ authRoutes.post('/new-trip', (req, res, next) => {
   })
 });
 
-
-authRoutes.post('/trips/:id',  ensureLogin.ensureLoggedIn() ,(req, res, next)=>{
+authRoutes.post('/trips/:id',  ensureLogin.ensureLoggedIn(), (req, res, next) => {
   //MONGO STUFF
   console.log(req.user)
   Trip.update(
@@ -125,7 +124,10 @@ authRoutes.post('/trips/:id',  ensureLogin.ensureLoggedIn() ,(req, res, next)=>{
   ).then(mod => {
     //res.json({backFromSERVErandDB:'yooooo'})
     res.redirect(`back`)
-  })
+  });
+});
 
-})
+authRoutes.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  res.render('profile', {user: req.user});
+});
 module.exports = authRoutes;

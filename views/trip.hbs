@@ -5,18 +5,21 @@
 
   <div class="trip-page-info">
     {{!-- <h3>Hello {{user.username}}</h3> --}}
-    <h6>Description</h6>
+    <h6>Description:</h6>
     <p>{{surfTrip.description}}</p>
-    <h6>Who's All Going?</h6>
-    <ul class="members-list">
+    <h6>Created By:</h6>
+    <p>{{surfTrip.creator}}</p>
+    {{!-- <ul class="members-list">
       {{#each surfTrip.members}}
         <li class="members-list-item">{{this}}</li>
       {{/each}}
-    </ul><br>
+    </ul><br> --}}
     {{#if user._id}}
-    <form method="POST" action="">
-      <button type="submit">Join Squad</button>
-    </form>
+      <form method="POST" action="">
+        <button type="submit">Join Squad</button>
+      </form>
+    {{else}}
+      <a href="/login"><button>Log In to Join Squad</button></a>
     {{/if}}
   </div>
 </div>
