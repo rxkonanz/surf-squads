@@ -26,7 +26,7 @@ authRoutes.post("/signup", (req, res, next) => {
     return;
   }
 
-  User.findOne({ username })
+  User.findOne({username})
   .then(user => {
     if (user !== null) {
       res.render("auth/signup", { message: "The username already exists", show: 'show', hideNavBar: true});
@@ -66,7 +66,7 @@ authRoutes.post("/login", passport.authenticate("local", {
 }));
 
 authRoutes.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
-  res.render("private", { user: req.user });
+  res.render("private", {user: req.user});
 });
 
 authRoutes.get("/logout", (req, res) => {
@@ -79,7 +79,7 @@ authRoutes.get("/home", (req, res, next) => {
     Trip.find()
     .then(trips => {
       console.log(trips);
-      res.render('home', { user: req.user, currentTrips: trips});
+      res.render('home', {user: req.user, currentTrips: trips});
     })
     .catch(error => {
       next(error);
@@ -90,11 +90,9 @@ authRoutes.get("/home", (req, res, next) => {
 });
 
 authRoutes.get('/trips/:id', (req, res, next) => {
-  console.log(req.params.id);
   Trip.findOne({_id: req.params.id})
   .then(surfTrip => {
-    res.render('trip', {surfTrip})
-    console.log(movie);
+    res.render('trip', {surfTrip: surfTrip, user: req.user});
   })
   .catch(error => {
     console.log(error);
@@ -107,7 +105,7 @@ authRoutes.get('/new-trip', (req, res, next) => {
 
 authRoutes.post('/new-trip', (req, res, next) => {
   console.log(req.body);
-  Trip.create({title: req.body.tripName, location: req.body.location, picture: req.body.imageLink, creator: "robkonanz@gmail.com", difficulty: req.body.difficulty})
+  Trip.create({title: req.body.tripName, location: req.body.location, description: req.body.description, picture: req.body.imageLink, creator: "robkonanz@gmail.com", difficulty: req.body.difficulty})
   .then(idk => {
     console.log("Inserted Successfully.");
     res.redirect('/home');
