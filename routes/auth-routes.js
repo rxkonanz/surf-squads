@@ -78,7 +78,7 @@ authRoutes.get("/home", (req, res, next) => {
   if (req.user) {
     Trip.find()
     .then(trips => {
-      console.log(trips);
+      //console.log(trips);
       res.render('home', {user: req.user, currentTrips: trips});
     })
     .catch(error => {
@@ -115,4 +115,17 @@ authRoutes.post('/new-trip', (req, res, next) => {
   })
 });
 
+
+authRoutes.post('/trips/:id',  ensureLogin.ensureLoggedIn() ,(req, res, next)=>{
+  //MONGO STUFF
+  console.log(req.user)
+  Trip.update(
+    {_id:req.params.id}, 
+    { $push: { members: req.user.username } }
+  ).then(mod => {
+    //res.json({backFromSERVErandDB:'yooooo'})
+    res.redirect(`back`)
+  })
+
+})
 module.exports = authRoutes;

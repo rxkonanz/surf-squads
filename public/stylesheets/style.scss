@@ -234,6 +234,14 @@ a {
   text-align: left;
   width: 60%;
 }
+.members-list {
+  display: inline-flex;
+  padding: 0;
+}
+.members-list-item {
+  padding: 0 8px;
+  list-style: none;
+}
 // END TRIP PAGE STYLING
 
 // START NEW TRIP PAGE STYLING

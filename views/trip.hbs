@@ -4,15 +4,31 @@
   <p class="trip-location">{{surfTrip.location}}</p>
 
   <div class="trip-page-info">
-    <h3>Hello {{user.username}}</h3>
+    {{!-- <h3>Hello {{user.username}}</h3> --}}
     <h6>Description</h6>
     <p>{{surfTrip.description}}</p>
-    <ul>
+    <h6>Who's All Going?</h6>
+    <ul class="members-list">
       {{#each surfTrip.members}}
-        <li>{{this}}</li>
+        <li class="members-list-item">{{this}}</li>
       {{/each}}
-    </ul>
-    <button>Join Squad</button>
+    </ul><br>
+    {{#if user._id}}
+    <form method="POST" action="">
+      <button type="submit">Join Squad</button>
+    </form>
+    {{/if}}
   </div>
-
 </div>
+
+<script>
+  /*
+  $("button").click(function(){
+    console.log('hey')
+    $.post("/addUserToSquad", {info:'whatever'}, function(backFromServer){
+      console.log(backFromServer, ' now u can add this by appending it with jquery')
+      $('.members-list').append('<li>embers-list-item</li>')
+    })
+  })*/
+
+</script>
