@@ -5,7 +5,8 @@ const userSchema = new Schema({
   fname: String,
   lname: String,
   username: String,
-  password: String
+  password: String,
+  profilePicture: String
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });

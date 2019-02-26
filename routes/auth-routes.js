@@ -18,9 +18,10 @@ authRoutes.get("/signup", (req, res, next) => {
   res.render("auth/signup", {hideNavBar: true, show: 'show'});
 });
 
-authRoutes.post("/signup", (req, res, next) => {
+authRoutes.post("/signup", uploadCloud.single('photo'), (req, res, next) => {
   const fname = req.body.fname;
   const lname = req.body.lname;
+  const profilePicture = req.file.url;
   const username = req.body.username;
   const password = req.body.password;
 
@@ -43,7 +44,8 @@ authRoutes.post("/signup", (req, res, next) => {
       fname,
       lname,
       username,
-      password: hashPass
+      password: hashPass,
+      profilePicture
     });
 
     newUser.save((err) => {
