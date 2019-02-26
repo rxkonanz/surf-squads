@@ -1,14 +1,7 @@
 <div class="container">
-  {{!-- <h3 id="home-title">Sick, Welcome Brah {{user.username}}!</h3> --}}
-  <a href="/new-trip"><div class="add-trip" height="40">
-    <img src="images/add.png" height="40" width="40">
-    <div class="add-trip-text" height="40">
-      <p id="add-trip-button-text">Add a Trip</p>
-    </div>
-  </div></a>
-  <h1 class="homepage-title">All Upcoming Trips:</h1>
+  <h1 class="my-trips-title">My Trips:</h1>
   <div class="row">
-    {{#each currentTrips}}
+    {{#each myTrips}}
       <div class="col-lg-4 col-md-6 col-xs-12">
           <a href="trips/{{this.id}}" class="trip-link-home"><img src="{{this.picture}}" class="trip-overview-image">
           <p class="trip-title-home">{{this.title}}</p></a>
@@ -16,5 +9,4 @@
       </div>
     {{/each}}
   </div>
-
 </div>

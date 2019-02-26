@@ -1,5 +1,13 @@
-<div class="container">
-  <h2>Profile</h2>
+<div class="profile-container">
+  <h2 class="profile-title">Profile</h2>
+  <h6>First Name:</h6>
+  <p>{{user.fname}}</p>
+  <h6>Last Name:</h6>
+  <p>{{user.lname}}</p>
   <h6>Email</h6>
   <p>{{user.username}}</p>
+  <form action="/logout" method="GET">
+    <button type="submit">Log Out</button>
+  </form>
 </div>
+  

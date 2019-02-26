@@ -99,12 +99,11 @@ input {
     padding: .5rem 1rem;
 
     &[type="email"],
-    &[type="password"] {
+    &[type="password"],
+    &[type="text"] {
       width: 100%;
     }
-
   }
-
 }
 
 $grid-max-width: 25rem;
@@ -347,3 +346,20 @@ input:focus ~ .highlight {
   width: 100%;
 }
 // END NEW TRIP PAGE STYLNG
+
+// START PROFILE PAGE SYLING
+.profile-container {
+  margin: auto;
+  width: 25%;
+}
+.profile-title {
+  margin-top: 40px;
+  text-align: center;
+}
+// END PROFILE PAGE STYLING
+
+// START MY TRIPS STYLING 
+.my-trips-title {
+  margin: 20px 0;
+  text-align: center;
+}

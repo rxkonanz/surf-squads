@@ -1,7 +1,7 @@
 <div class="new-trip-container">
   <h1 id="new-trip-title">Create a New Trip</h1>
 
-  <form class="new-trip-form" action="/new-trip" method="POST">
+  <form class="new-trip-form" action="/new-trip" method="POST" enctype="multipart/form-data">
     <div class="group">      
       <input name="tripName" type="text" class="fancy-input" required>
       <span class="highlight"></span>
@@ -31,11 +31,17 @@
     </div>
 
     <div class="group">      
+      <input name="photo" type="file" class="fancy-input" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+    </div>
+
+    {{!-- <div class="group">      
       <input name="imageLink" type="text" class="fancy-input" required>
       <span class="highlight"></span>
       <span class="bar"></span>
       <label>Image Link</label>
-    </div>
+    </div> --}}
     <button type="submit">Create</button>
   </form>
 </div>

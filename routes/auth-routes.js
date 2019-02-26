@@ -5,6 +5,7 @@ const ensureLogin  = require("connect-ensure-login");
 const passport     = require("passport");
 const flash        = require("connect-flash");
 const Trip         = require('../models/trip');
+const uploadCloud =  require('../config/cloudinary.js');
 
 // User model
 const User = require("../models/user");
@@ -18,6 +19,8 @@ authRoutes.get("/signup", (req, res, next) => {
 });
 
 authRoutes.post("/signup", (req, res, next) => {
+  const fname = req.body.fname;
+  const lname = req.body.lname;
   const username = req.body.username;
   const password = req.body.password;
 
@@ -37,6 +40,8 @@ authRoutes.post("/signup", (req, res, next) => {
     const hashPass = bcrypt.hashSync(password, salt);
 
     const newUser = new User({
+      fname,
+      lname,
       username,
       password: hashPass
     });
@@ -103,16 +108,21 @@ authRoutes.get('/new-trip', (req, res, next) => {
   res.render('new-trip');
 });
 
-authRoutes.post('/new-trip', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  console.log(req.body);
-  Trip.create({title: req.body.tripName, location: req.body.location, description: req.body.description, picture: req.body.imageLink, creator: req.user.username, difficulty: req.body.difficulty})
-  .then(idk => {
-    console.log("Inserted Successfully.");
-    res.redirect('/home');
-  })
-  .catch(error => {
-    next(error);
-  })
+authRoutes.post('/new-trip', ensureLogin.ensureLoggedIn(), uploadCloud.single('photo'), (req, res, next) => {
+  
+  //console.log(req.body);
+  // CLOUDINARY CODE
+  const imgPath = req.file.url;
+  
+  Trip.create({title: req.body.tripName, location: req.body.location, description: req.body.description, picture: imgPath, creator: req.user.username, difficulty: req.body.difficulty})
+    .then(idk => {
+      console.log("Inserted Successfully.");
+      res.redirect('/home');
+    })
+    .catch(error => {
+      next(error);
+    })
+  
 });
 
 authRoutes.post('/trips/:id',  ensureLogin.ensureLoggedIn(), (req, res, next) => {
@@ -129,5 +139,16 @@ authRoutes.post('/trips/:id',  ensureLogin.ensureLoggedIn(), (req, res, next) =>
 
 authRoutes.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render('profile', {user: req.user});
+});
+
+authRoutes.get('/my-trips', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  Trip.find({members: req.user.username})
+  .then(myTrips => {
+    console.log("Inserted Successfully.");
+    res.render('my-trips', {myTrips, user: req.user});
+  })
+  .catch(error => {
+    next(error);
+  })
 });
 module.exports = authRoutes;

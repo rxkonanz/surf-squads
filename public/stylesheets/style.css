@@ -58,7 +58,7 @@ input {
 .form input {
   outline: 0;
   padding: .5rem 1rem; }
-  .form input[type="email"], .form input[type="password"] {
+  .form input[type="email"], .form input[type="password"], .form input[type="text"] {
     width: 100%; }
 
 .grid {
@@ -278,5 +278,17 @@ input:focus ~ .highlight {
 
 .fancy-input {
   width: 100%; }
+
+.profile-container {
+  margin: auto;
+  width: 25%; }
+
+.profile-title {
+  margin-top: 40px;
+  text-align: center; }
+
+.my-trips-title {
+  margin: 20px 0;
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
