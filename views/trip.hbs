@@ -8,19 +8,25 @@
     <h6>Description:</h6>
     <p>{{surfTrip.description}}</p>
     <h6>Created By:</h6>
-    <p>{{surfTrip.creator}}</p>
+    <a href="/surfers/{{surfTrip.creator._id}}"><p>{{surfTrip.creator.username}}</p></a>
     {{!-- <ul class="members-list">
       {{#each surfTrip.members}}
         <li class="members-list-item">{{this}}</li>
       {{/each}}
     </ul><br> --}}
-    {{#if user._id}}
+    {{!-- {{#if (eq user._id surfTrip.creator._id)}}
+      <button type="submit">Delete Squad</button>
+      <button type="submit">Edit Squad</button>
+    {{/if}} --}}
+      {{!-- <button type="submit">Join Squad</button>
+    {{/if}} --}}
+    {{!-- {{#if user._id}}
       <form method="POST" action="">
         <button type="submit">Join Squad</button>
       </form>
     {{else}}
       <a href="/login"><button>Log In to Join Squad</button></a>
-    {{/if}}
+    {{/if}} --}}
   </div>
 </div>
 

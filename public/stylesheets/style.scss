@@ -12,7 +12,6 @@ nav {
   background-color: #354152;
   color: white;
 }
-
 .carousel-item {
   height: 100vh;
   min-height: 350px;
@@ -21,6 +20,12 @@ nav {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+.navbar-nav {
+  margin-right: 50px;
+}
+.navbar-brand {
+  margin-left: 50px;
 }
 // END OF NAVBAR STYLING
 
@@ -399,7 +404,6 @@ input:focus ~ .highlight {
   border-radius: 50%;
   height: auto;
   margin: 0 10% 20px 10%;
-  max-height: 250px;
   text-align: center;
   width: 80%;
 }

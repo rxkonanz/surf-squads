@@ -96,7 +96,7 @@ authRoutes.get("/home", (req, res, next) => {
   }
 });
 
-authRoutes.get('/trips/:id', (req, res, next) => {
+authRoutes.get('/trips/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   Trip.findOne({_id: req.params.id})
   .then(surfTrip => {
     res.render('trip', {surfTrip: surfTrip, user: req.user});
@@ -106,7 +106,7 @@ authRoutes.get('/trips/:id', (req, res, next) => {
   })
 });
 
-authRoutes.get('/new-trip', (req, res, next) => {
+authRoutes.get('/new-trip', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render('new-trip');
 });
 
@@ -116,18 +116,24 @@ authRoutes.post('/new-trip', ensureLogin.ensureLoggedIn(), uploadCloud.single('p
   // CLOUDINARY CODE
   const imgPath = req.file.url;
   
-  Trip.create({title: req.body.tripName, location: req.body.location, description: req.body.description, picture: imgPath, creator: req.user.username, difficulty: req.body.difficulty})
+  User.findOne({username: req.user.username})
+  .then(currentUser => {
+    console.log("CHEEEEECKKKK HEEEEREEEEEEEEE");
+    console.log(currentUser);
+    Trip.create({title: req.body.tripName, location: req.body.location, description: req.body.description, picture: imgPath, creator: currentUser, difficulty: req.body.difficulty, host: currentUser._id})
     .then(idk => {
-      console.log("Inserted Successfully.");
       res.redirect('/home');
     })
     .catch(error => {
       next(error);
     })
-  
+  })
+  .catch(error => {
+    next(error);
+  })
 });
 
-authRoutes.post('/trips/:id',  ensureLogin.ensureLoggedIn(), (req, res, next) => {
+authRoutes.post('/trips/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   //MONGO STUFF
   console.log(req.user)
   Trip.update(
@@ -138,6 +144,19 @@ authRoutes.post('/trips/:id',  ensureLogin.ensureLoggedIn(), (req, res, next) =>
     res.redirect(`back`)
   });
 });
+
+// authRoutes.post('/trips/:id/edit', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+//   //MONGO STUFF
+//   console.log(req.user)
+//   Trip.update(
+//     {_id:req.user._id}, 
+//     { $push: { members: req.user.username } }
+//   ).then(mod => {
+//     //res.json({backFromSERVErandDB:'yooooo'})
+//     res.redirect(`back`)
+//   });
+// });
+
 
 authRoutes.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render('profile', {user: req.user});
@@ -153,4 +172,15 @@ authRoutes.get('/my-trips', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     next(error);
   })
 });
+
+authRoutes.get('/surfers/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  User.findOne({_id: req.params.id})
+  .then(surfer => {
+    res.render('other-surfer', {surfer});
+  })
+  .catch(error => {
+    console.log(error);
+  })
+});
+
 module.exports = authRoutes;

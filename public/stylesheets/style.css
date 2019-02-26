@@ -18,6 +18,12 @@ nav {
   -o-background-size: cover;
   background-size: cover; }
 
+.navbar-nav {
+  margin-right: 50px; }
+
+.navbar-brand {
+  margin-left: 50px; }
+
 * {
   box-sizing: border-box; }
 
@@ -321,7 +327,6 @@ input:focus ~ .highlight {
   border-radius: 50%;
   height: auto;
   margin: 0 10% 20px 10%;
-  max-height: 250px;
   text-align: center;
   width: 80%; }
 

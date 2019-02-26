@@ -6,9 +6,10 @@ const tripSchema = new Schema({
   location: String,
   description: String,
   picture: String,
-  creator: String,
+  creator: Object,
   members: Array,
-  difficulty: String
+  difficulty: String,
+  host: { type: Schema.Types.ObjectId, ref:'User'}
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });

@@ -34,10 +34,10 @@ const trips = [
     difficulty:"Expert"
   },
   {
-    title: "Nicaragua Rico Surf Trip",
+    title: "4BR House Nicaragua Beach Front",
     location: "Managua, Nicaragua",
     description: "Renting a Bongaloo for 5 days and need two extra people.",
-    picture: "http://www.los-clavos.com/photos/blog/galeries/zooms/P1020278_35.JPG",
+    picture: "http://www.hungrywalrus.com/wp-content/uploads/2012/01/nicaragua-beach-house-hungry-walrus.jpg",
     creator: "gmedina@wsl.com",
     members: ["robkonanz@gmail.com", "gmedina@wsl.com", "jwilson@wsl.com"],
     difficulty: "Intermmediate"
@@ -88,10 +88,10 @@ const trips = [
     difficulty:"Advanced"
   },
   {
-    title:"Hossegor",
+    title:"3BR House in Hossegor",
     location:"Hossegor, France",
     description: "Me and my friend are headed to Hossegor from Barcelona. We rented a 3BR, so if anyone is interested lmk.",
-    picture:"https://cdn.surfer.com/uploads/2016/07/Hossegor_Testemale_post.jpg",
+    picture:"https://media-cdn.tripadvisor.com/media/vr-splice-j/06/1a/0b/d5.jpg",
     creator:"robkonanz@gmail.com",
     members:["robkonanz@gmail.com", "gmedina@wsl.com","jflorence@wsl.com"],
     difficulty:"Expert"
@@ -115,7 +115,7 @@ const trips = [
     difficulty:"Advanced"
   },
   {
-    title:"JBay Surf Trip",
+    title:"JBay House",
     location:"Johannesburg, South Africa",
     description:"Found a combo safari/surf trip by local tourist company. Looking for 5 more people to fill the 10 people deal.",
     picture:"https://cdn.surfer.com/uploads/2013/06/jbaygrambeau.png",
@@ -136,7 +136,7 @@ const trips = [
     title:"Tel Aviv Surf",
     location:"Tel Aviv, Israel",
     description: "5BR House in Israel. 3 available rooms for interested surfers.",
-    picture:"http://hg2.com/wp-content/uploads/2015/07/telaviv-thingstodo-surfpoint.jpg",
+    picture:"https://pic.le-cdn.com/thumbs/520x390/04/1/properties/Property-fbf700000000037a00015b5ff75f-58390523.jpg",
     creator:"gmedina@wsl.com",
     members:["gmedina@wsl.com", "kslater@wsl.com"],
     difficulty:"Intermmediate"
