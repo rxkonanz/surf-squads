@@ -227,7 +227,7 @@ authRoutes.post('/trip/leave/:id', ensureLogin.ensureLoggedIn(), uploadCloud.sin
     {_id:req.params.id}, 
     { $pull: { members: req.user.username } }
   ).then(mod => {
-    res.redirect("/home");
+    res.redirect(`back`);
   });
 });
 

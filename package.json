@@ -10,6 +10,7 @@
   "dependencies": {
     "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
     "cloudinary": "^1.13.2",
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
@@ -25,6 +26,7 @@
     "node-sass-middleware": "^0.11.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "request": "^2.88.0",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
