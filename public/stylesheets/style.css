@@ -206,6 +206,12 @@ a {
   padding: 0 8px;
   list-style: none; }
 
+.own-action-buttons {
+  display: flex; }
+
+.delete-trip {
+  margin-right: 10px; }
+
 .new-trip-container {
   margin: auto;
   width: 60%; }

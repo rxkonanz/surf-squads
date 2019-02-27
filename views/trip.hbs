@@ -4,29 +4,27 @@
   <p class="trip-location">{{surfTrip.location}}</p>
 
   <div class="trip-page-info">
-    {{!-- <h3>Hello {{user.username}}</h3> --}}
     <h6>Description:</h6>
     <p>{{surfTrip.description}}</p>
     <h6>Created By:</h6>
     <a href="/surfers/{{surfTrip.creator._id}}"><p>{{surfTrip.creator.username}}</p></a>
-    {{!-- <ul class="members-list">
-      {{#each surfTrip.members}}
-        <li class="members-list-item">{{this}}</li>
-      {{/each}}
-    </ul><br> --}}
-    {{!-- {{#if (eq user._id surfTrip.creator._id)}}
-      <button type="submit">Delete Squad</button>
-      <button type="submit">Edit Squad</button>
-    {{/if}} --}}
-      {{!-- <button type="submit">Join Squad</button>
-    {{/if}} --}}
-    {{!-- {{#if user._id}}
-      <form method="POST" action="">
-        <button type="submit">Join Squad</button>
-      </form>
+
+    {{#if ownIt}}
+      <div class="own-action-buttons">
+        <form method="POST" action="/trip/delete/{{surfTrip._id}}" class="delete-trip">
+          <button type="submit" class="delete-button">Delete Trip</button>
+        </form>
+        <form method="POST" action="/trip/edit/{{surfTrip._id}}">
+          <button type="submit">Edit Trip</button>
+        </form>
+      </div>
     {{else}}
-      <a href="/login"><button>Log In to Join Squad</button></a>
-    {{/if}} --}}
+      <div class="visitor-action-button">
+        <form method="POST" action="/trip/join/{{surfTrip._id}}">
+          <button type="submit">Join Squad</button>
+        </form>
+      </div>
+    {{/if}}
   </div>
 </div>
 

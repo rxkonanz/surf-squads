@@ -97,9 +97,17 @@ authRoutes.get("/home", (req, res, next) => {
 });
 
 authRoutes.get('/trips/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  
   Trip.findOne({_id: req.params.id})
   .then(surfTrip => {
-    res.render('trip', {surfTrip: surfTrip, user: req.user});
+    var currentUser = req.user._id;
+    var theCreator = surfTrip.creator._id;
+    if(String(currentUser) == String(theCreator)){
+      res.render('trip', {surfTrip: surfTrip, user: req.user, ownIt: true});
+    }
+    else {
+      res.render('trip', {surfTrip: surfTrip, user: req.user, ownIt: false});
+    }
   })
   .catch(error => {
     console.log(error);
@@ -133,7 +141,7 @@ authRoutes.post('/new-trip', ensureLogin.ensureLoggedIn(), uploadCloud.single('p
   })
 });
 
-authRoutes.post('/trips/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+authRoutes.post('/trip/join/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   //MONGO STUFF
   console.log(req.user)
   Trip.update(
@@ -145,28 +153,24 @@ authRoutes.post('/trips/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => 
   });
 });
 
-// authRoutes.post('/trips/:id/edit', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-//   //MONGO STUFF
-//   console.log(req.user)
-//   Trip.update(
-//     {_id:req.user._id}, 
-//     { $push: { members: req.user.username } }
-//   ).then(mod => {
-//     //res.json({backFromSERVErandDB:'yooooo'})
-//     res.redirect(`back`)
-//   });
-// });
-
-
 authRoutes.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render('profile', {user: req.user});
 });
 
-authRoutes.get('/my-trips', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+authRoutes.get('/owned-trips', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  Trip.find({creator: req.user})
+  .then(myTrips => {
+    res.render('owned-trips', {myTrips, user: req.user});
+  })
+  .catch(error => {
+    next(error);
+  })
+});
+
+authRoutes.get('/joined-trips', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   Trip.find({members: req.user.username})
   .then(myTrips => {
-    console.log("Inserted Successfully.");
-    res.render('my-trips', {myTrips, user: req.user});
+    res.render('joined-trips', {myTrips, user: req.user});
   })
   .catch(error => {
     next(error);
@@ -177,6 +181,38 @@ authRoutes.get('/surfers/:id', ensureLogin.ensureLoggedIn(), (req, res, next) =>
   User.findOne({_id: req.params.id})
   .then(surfer => {
     res.render('other-surfer', {surfer});
+  })
+  .catch(error => {
+    console.log(error);
+  })
+});
+
+authRoutes.post('/trip/delete/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  Trip.remove({_id:req.params.id})
+  .then(mod => {
+    res.redirect("/home");
+  })
+  .catch(error => {
+    console.log(error);
+  })
+});
+
+authRoutes.post('/trip/edit/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  Trip.findOne({_id:req.params.id})
+  .then(trip => {
+    res.render('edit-trip', {trip});
+  })
+  .catch(error => {
+    console.log(error);
+  })
+});
+
+authRoutes.post('/edit-trip/:id', ensureLogin.ensureLoggedIn(), uploadCloud.single('photo'), (req, res, next) => {
+  const imgPath = req.file.url;
+  Trip.updateOne({_id:req.params.id}, {title: req.body.tripName, location: req.body.location, description: req.body.description, picture: imgPath, difficulty: req.body.difficulty})
+  .then(response => {
+    console.log("Edited Successfully");
+    res.redirect('/home');
   })
   .catch(error => {
     console.log(error);

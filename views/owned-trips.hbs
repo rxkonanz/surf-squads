@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="my-trips-title">Created by Me:</h1>
+  <div class="row">
+    {{#each myTrips}}
+      <div class="col-lg-4 col-md-6 col-xs-12">
+          <a href="trips/{{this.id}}" class="trip-link-home"><img src="{{this.picture}}" class="trip-overview-image">
+          <p class="trip-title-home">{{this.title}}</p></a>
+          <p class="trip-level-home"><b>Level: {{this.difficulty}}</b></p>
+      </div>
+    {{/each}}
+  </div>
+</div>
