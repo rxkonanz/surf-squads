@@ -19,11 +19,15 @@
         </form>
       </div>
     {{else}}
-      <div class="visitor-action-button">
-        <form method="POST" action="/trip/join/{{surfTrip._id}}">
-          <button type="submit">Join Squad</button>
-        </form>
-      </div>
+      {{#if joined}}
+        <h6>*You are a member of this trip!*</h6>
+        {{else}}
+        <div class="visitor-action-button">
+          <form method="POST" action="/trip/join/{{surfTrip._id}}">
+            <button type="submit">Join Squad</button>
+          </form>
+        </div>
+      {{/if}}
     {{/if}}
   </div>
 </div>

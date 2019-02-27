@@ -100,13 +100,19 @@ authRoutes.get('/trips/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   
   Trip.findOne({_id: req.params.id})
   .then(surfTrip => {
-    var currentUser = req.user._id;
+    var currentUserID = req.user._id;
     var theCreator = surfTrip.creator._id;
-    if(String(currentUser) == String(theCreator)){
-      res.render('trip', {surfTrip: surfTrip, user: req.user, ownIt: true});
+    if(String(currentUserID) == String(theCreator)){
+      console.log(surfTrip);
+      res.render('trip', {surfTrip: surfTrip, user: req.user, ownIt: true, joined: false});
     }
-    else {
-      res.render('trip', {surfTrip: surfTrip, user: req.user, ownIt: false});
+    else{
+      if(surfTrip.members.includes(req.user.username)){
+        res.render('trip', {surfTrip: surfTrip, user: req.user, ownIt: false, joined: true});
+      }
+      else {
+        res.render('trip', {surfTrip: surfTrip, user: req.user, ownIt: false, joined: false});
+      }
     }
   })
   .catch(error => {
