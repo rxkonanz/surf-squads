@@ -148,14 +148,11 @@ authRoutes.post('/new-trip', ensureLogin.ensureLoggedIn(), uploadCloud.single('p
 });
 
 authRoutes.post('/trip/join/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  //MONGO STUFF
-  console.log(req.user)
   Trip.update(
     {_id:req.params.id}, 
     { $push: { members: req.user.username } }
   ).then(mod => {
-    //res.json({backFromSERVErandDB:'yooooo'})
-    res.redirect(`back`)
+    res.redirect(`back`);
   });
 });
 
@@ -223,6 +220,15 @@ authRoutes.post('/edit-trip/:id', ensureLogin.ensureLoggedIn(), uploadCloud.sing
   .catch(error => {
     console.log(error);
   })
+});
+
+authRoutes.post('/trip/leave/:id', ensureLogin.ensureLoggedIn(), uploadCloud.single('photo'), (req, res, next) => {
+  Trip.update(
+    {_id:req.params.id}, 
+    { $pull: { members: req.user.username } }
+  ).then(mod => {
+    res.redirect("/home");
+  });
 });
 
 module.exports = authRoutes;

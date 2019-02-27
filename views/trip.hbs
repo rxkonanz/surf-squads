@@ -21,10 +21,15 @@
     {{else}}
       {{#if joined}}
         <h6>*You are a member of this trip!*</h6>
+        <div>
+          <form method="POST" action="/trip/leave/{{surfTrip._id}}">
+            <button type="submit">Leave Trip</button>
+          </form>
+        </div>
         {{else}}
         <div class="visitor-action-button">
           <form method="POST" action="/trip/join/{{surfTrip._id}}">
-            <button type="submit">Join Squad</button>
+            <button type="submit">Join Trip</button>
           </form>
         </div>
       {{/if}}
