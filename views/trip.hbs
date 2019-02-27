@@ -8,6 +8,8 @@
     <p>{{surfTrip.description}}</p>
     <h6>Created By:</h6>
     <a href="/surfers/{{surfTrip.creator._id}}"><p>{{surfTrip.creator.username}}</p></a>
+    <h6>AirBnb Link:</h6>
+    <a href="{{surfTrip.airbnbLink}}" class="airbnb-link">Click Here</a>
 
     {{#if ownIt}}
       <div class="own-action-buttons">
@@ -20,7 +22,7 @@
       </div>
     {{else}}
       {{#if joined}}
-        <h6>*You are a member of this trip!*</h6>
+        <h6 class="already-member">*You are a member of this trip!*</h6>
         <div>
           <form method="POST" action="/trip/leave/{{surfTrip._id}}">
             <button type="submit">Leave Trip</button>

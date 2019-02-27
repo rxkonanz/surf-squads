@@ -207,10 +207,17 @@ a {
   list-style: none; }
 
 .own-action-buttons {
-  display: flex; }
+  display: flex;
+  margin-top: 20px; }
+
+.visitor-action-button {
+  margin-top: 20px; }
 
 .delete-trip {
   margin-right: 10px; }
+
+.already-member {
+  margin-top: 20px; }
 
 .new-trip-container {
   margin: auto;

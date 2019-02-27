@@ -9,6 +9,7 @@ const tripSchema = new Schema({
   creator: Object,
   members: Array,
   difficulty: String,
+  airbnbLink: String,
   host: { type: Schema.Types.ObjectId, ref:'User'}
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

@@ -287,9 +287,16 @@ a {
 }
 .own-action-buttons {
   display: flex;
+  margin-top: 20px;
+}
+.visitor-action-button {
+  margin-top: 20px;
 }
 .delete-trip {
   margin-right: 10px;
+}
+.already-member {
+  margin-top: 20px;
 }
 // END TRIP PAGE STYLING
 
