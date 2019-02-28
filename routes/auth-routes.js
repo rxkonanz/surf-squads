@@ -6,6 +6,7 @@ const passport     = require("passport");
 const flash        = require("connect-flash");
 const Trip         = require('../models/trip');
 const uploadCloud =  require('../config/cloudinary.js');
+const nodemailer = require('nodemailer');
 
 // User model
 const User = require("../models/user");
@@ -259,6 +260,39 @@ authRoutes.post('/trip/leave/:id', ensureLogin.ensureLoggedIn(), uploadCloud.sin
   ).then(mod => {
     res.redirect(`back`);
   });
+});
+
+authRoutes.get('/send-message/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  User.findOne({_id: req.params.id})
+  .then(user => {
+    res.render('send-message', {user});
+  })
+});
+
+authRoutes.post('/send-message', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'robkonanz@gmail.com',
+      pass: process.env.GMAILPASS
+    }
+  });
+  
+  var mailOptions = {
+    from: req.body.recipient,
+    to: 'robkonanz@gmail.com',
+    subject: req.body.subject,
+    text: req.body.message
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+  console.log(req.body);
 });
 
 module.exports = authRoutes;

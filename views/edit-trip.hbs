@@ -3,28 +3,28 @@
 
   <form class="new-trip-form" action="/edit-trip/{{trip.id}}" method="POST" enctype="multipart/form-data">
     <div class="group">      
-      <input name="tripName" type="text" class="fancy-input" required>
+      <input name="tripName" type="text" value="{{trip.title}}" class="fancy-input" required>
       <span class="highlight"></span>
       <span class="bar"></span>
       <label>Trip Title</label>
     </div>
       
     <div class="group">      
-      <input name="location" type="text" class="fancy-input" required>
+      <input name="location" type="text" value="{{trip.location}}" class="fancy-input" required>
       <span class="highlight"></span>
       <span class="bar"></span>
       <label>Location</label>
     </div>
 
     <div class="group">      
-      <input name="description" type="text" class="fancy-input" required>
+      <input name="description" type="text" value="{{trip.description}}" class="fancy-input" required>
       <span class="highlight"></span>
       <span class="bar"></span>
       <label>Description</label>
     </div>
 
     <div class="group">      
-      <input name="difficulty" type="text" class="fancy-input" required>
+      <input name="difficulty" type="text" value="{{trip.difficulty}}"class="fancy-input" required>
       <span class="highlight"></span>
       <span class="bar"></span>
       <label>Difficulty</label>
@@ -35,12 +35,7 @@
       <span class="highlight"></span>
       <span class="bar"></span>
     </div>
+
     <button type="submit">Save</button>
   </form>
 </div>
-
-<script>
-  window.onload = function(){
-    document.getElementById("company_name").value = "value";
-  }
-</script>

@@ -1,0 +1,19 @@
+<div class="container">
+  <form method="POST" action="/send-message" class="new-message-form">
+    <h1 id="new-message-title">Send a Message</h1>
+    <div class="group">
+      <input name="recipient" value="{{user.username}}" type="text" class="fancy-input" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>To:</label>
+    </div>
+    <div class="group">
+      <input name="subject" type="text" class="fancy-input" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Subject</label>
+    </div>
+    <textarea name="message" class="new-message-text"></textarea>
+    <button type="submit">Send Email</button>
+  </form>
+</div>

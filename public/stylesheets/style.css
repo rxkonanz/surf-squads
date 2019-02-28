@@ -359,6 +359,16 @@ input:focus ~ .highlight {
   margin: 20px 0;
   text-align: center; }
 
+.new-message-form {
+  margin-top: 20px; }
+
+.new-message-text {
+  height: 200px;
+  width: 100%; }
+
+#new-message-title {
+  margin-bottom: 30px; }
+
 /* Landscape phones and down */
 @media (max-width: 480px) {
   .profile-container {
