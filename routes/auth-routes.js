@@ -292,6 +292,7 @@ authRoutes.post('/send-message', ensureLogin.ensureLoggedIn(), (req, res, next) 
       console.log('Email sent: ' + info.response);
     }
   });
+  res.redirect("/home");
   console.log(req.body);
 });
 
