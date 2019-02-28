@@ -16,6 +16,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const flash = require("connect-flash");
 
 
+
 mongoose.Promise = Promise;
 mongoose
   .connect(process.env.DATABASE, {useMongoClient: true})
