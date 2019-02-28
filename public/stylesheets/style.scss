@@ -450,9 +450,12 @@ input:focus ~ .highlight {
   }
   .new-trip-container {
     margin: 0;
-    width: 80%;
+    width: 100%;
   }
   #new-trip-title {
     text-align: center;
+  }
+  .container {
+    padding: 0;
   }
 }
