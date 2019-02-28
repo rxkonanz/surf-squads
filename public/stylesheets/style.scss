@@ -439,3 +439,13 @@ input:focus ~ .highlight {
   margin: 20px 0;
   text-align: center;
 }
+
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+  .profile-container {
+    width: 80%;
+  }
+  .trip-page-info, .trip-page-image {
+    width: 100%;
+  }
+}
