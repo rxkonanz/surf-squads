@@ -183,25 +183,32 @@ authRoutes.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render('profile', {user: req.user});
 });
 
-authRoutes.get('/owned-trips', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+authRoutes.get('/my-trips', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+
   Trip.find({creator: req.user})
-  .then(myTrips => {
-    res.render('owned-trips', {myTrips, user: req.user});
+  .then(ownedTrips => {
+    var iOwn = false;
+    if(ownedTrips.length>0){
+      iOwn = true;
+    }
+    Trip.find({members: req.user})
+    .then(joinedTrips => {
+      var iJoined = false;
+      if(joinedTrips.length>0){
+        iJoined = true;
+      }
+      res.render('my-trips', {ownedTrips, joinedTrips, iOwn, iJoined});
+    })
+    .catch(error => {
+      next(error);
+    })
   })
   .catch(error => {
     next(error);
   })
+
 });
 
-authRoutes.get('/joined-trips', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  Trip.find({members: req.user})
-  .then(myTrips => {
-    res.render('joined-trips', {myTrips, user: req.user});
-  })
-  .catch(error => {
-    next(error);
-  })
-});
 
 authRoutes.get('/surfers/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   User.findOne({_id: req.params.id})

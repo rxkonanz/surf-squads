@@ -1,0 +1,26 @@
+<div class="container">
+  {{#if iOwn}}
+    <h1 class="my-trips-title">Trips You Own:</h1>
+    <div class="row">
+      {{#each ownedTrips}}
+        <div class="col-lg-4 col-md-6 col-xs-12">
+            <a href="trips/{{this.id}}" class="trip-link-home"><img src="{{this.picture}}" class="trip-overview-image">
+            <p class="trip-title-home">{{this.title}}</p></a>
+            <p class="trip-level-home"><b>Level: {{this.difficulty}}</b></p>
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+  {{#if iJoined}}
+    <h1 class="my-trips-title">Trips You Joined:</h1>
+    <div class="row">
+      {{#each joinedTrips}}
+        <div class="col-lg-4 col-md-6 col-xs-12">
+            <a href="trips/{{this.id}}" class="trip-link-home"><img src="{{this.picture}}" class="trip-overview-image">
+            <p class="trip-title-home">{{this.title}}</p></a>
+            <p class="trip-level-home"><b>Level: {{this.difficulty}}</b></p>
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
