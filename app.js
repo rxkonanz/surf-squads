@@ -19,7 +19,7 @@ const flash = require("connect-flash");
 
 mongoose.Promise = Promise;
 mongoose
-  .connect(`mongodb+srv://rkonanz:${process.env.DBPASS}@cluster0-xavkp.mongodb.net/test?retryWrites=true`, {useMongoClient: true})
+  .connect(`mongodb+srv://rkonanz:${process.env.DBPASS}@cluster0-xavkp.mongodb.net/test?retryWrites=true`)
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
