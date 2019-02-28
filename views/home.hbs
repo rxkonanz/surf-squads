@@ -11,7 +11,7 @@
     {{#each currentTrips}}
       <div class="col-lg-4 col-md-6 col-xs-12">
           <a href="trips/{{this.id}}" class="trip-link-home"><img src="{{this.picture}}" class="trip-overview-image">
-          <p class="trip-title-home">{{this.title}}</p></a>
+          <p class="trip-title-home">{{this.beds}}BED {{this.title}}</p></a>
           <p class="trip-level-home"><b>Surf Level: {{this.difficulty}}</b></p>
       </div>
     {{/each}}

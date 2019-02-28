@@ -1,5 +1,5 @@
 <div class="container trip-container">
-  <h2 class="trip-title">{{surfTrip.title}}</h2>
+  <h2 class="trip-title">{{surfTrip.beds}}BED {{surfTrip.title}}</h2>
   <img src="{{surfTrip.picture}}" class="trip-page-image">
   <p class="trip-location">{{surfTrip.location}}</p>
 
@@ -11,7 +11,7 @@
     <h6>AirBnb Link:</h6>
     <a href="{{surfTrip.airbnbLink}}" class="airbnb-link">Click Here</a>
     {{#if isEmpty}}
-      <h6 class="no-members">*No one has joined this trip yet*</h6>
+      <h6 class="no-members">Be the first one to join this trip!</h6>
     {{else}}
       <h6 class="members-title">Who's All Going:</h6>
       <ul class="members-list">

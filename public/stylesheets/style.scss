@@ -407,6 +407,13 @@ input:focus ~ .highlight {
 .fancy-input {
   width: 100%;
 }
+#select-beds {
+  display: flex;
+  margin-bottom: 15px;
+}
+.bed-selection {
+  margin-left: 15px;
+}
 // END NEW TRIP PAGE STYLNG
 
 // START PROFILE PAGE SYLING

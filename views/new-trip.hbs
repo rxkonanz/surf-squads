@@ -2,6 +2,41 @@
   <h1 id="new-trip-title">Create a New Trip</h1>
 
   <form class="new-trip-form" action="/new-trip" method="POST" enctype="multipart/form-data">
+    
+    <div class="group" id="select-beds">
+      <p># of Beds:</p>
+      <select name="beds" class="bed-selection">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="">15+</option>
+      </select>
+    </div>
+
+    <div class="group">      
+      <input name="photo" type="file" class="fancy-input" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="group">      
+      <input name="airbnbLink" type="text" class="fancy-input" required>
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>AirBnb Link</label>
+    </div>
+    
     <div class="group">      
       <input name="tripName" type="text" class="fancy-input" required>
       <span class="highlight"></span>
@@ -29,37 +64,6 @@
       <span class="bar"></span>
       <label>Difficulty</label>
     </div>
-
-    <div class="group">      
-      <input name="airbnbLink" type="text" class="fancy-input" required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>AirBnb Link</label>
-    </div>
-
-    <div class="group">      
-      <input name="photo" type="file" class="fancy-input" required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-    </div>
-
-    <select name="beds">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-      <option value="12">12</option>
-      <option value="13">13</option>
-      <option value="14">14</option>
-      <option value="">15+</option>
-    </select>
 
     <button type="submit">Create</button>
   </form>
