@@ -364,6 +364,11 @@ input:focus ~ .highlight {
   .profile-container {
     width: 80%; }
   .trip-page-info, .trip-page-image {
-    width: 100%; } }
+    width: 100%; }
+  .new-trip-container {
+    margin: 0;
+    width: 80%; }
+  #new-trip-title {
+    text-align: center; } }
 
 /*# sourceMappingURL=style.css.map */

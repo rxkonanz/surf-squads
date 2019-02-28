@@ -448,4 +448,11 @@ input:focus ~ .highlight {
   .trip-page-info, .trip-page-image {
     width: 100%;
   }
+  .new-trip-container {
+    margin: 0;
+    width: 80%;
+  }
+  #new-trip-title {
+    text-align: center;
+  }
 }
