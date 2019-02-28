@@ -127,10 +127,9 @@ authRoutes.get('/new-trip', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 authRoutes.post('/new-trip', ensureLogin.ensureLoggedIn(), uploadCloud.single('photo'), (req, res, next) => {
   // CLOUDINARY CODE
   const imgPath = req.file.url;
-  
   User.findOne({username: req.user.username})
   .then(currentUser => {
-    Trip.create({title: req.body.tripName, location: req.body.location, description: req.body.description, picture: imgPath, creator: currentUser, difficulty: req.body.difficulty, airbnbLink: req.body.airbnbLink, host: currentUser._id})
+    Trip.create({title: req.body.tripName, location: req.body.location, description: req.body.description, members:[currentUser], picture: imgPath, creator: currentUser, difficulty: req.body.difficulty, airbnbLink: req.body.airbnbLink, beds:req.body.rooms})
     .then(idk => {
       res.redirect('/home');
     })

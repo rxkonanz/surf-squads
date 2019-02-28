@@ -15,9 +15,10 @@ const passport     = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const flash = require("connect-flash");
 
+
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/surf-squads', {useMongoClient: true})
+  .connect(process.env.DATABASE, {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {

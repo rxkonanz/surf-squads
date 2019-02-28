@@ -279,11 +279,12 @@ a {
 }
 .members-list {
   display: inline-flex;
+  max-width: 100%;
   padding: 0;
+  list-style-type: none;
 }
 .members-list-item {
   padding: 0 8px;
-  list-style: none;
 }
 .own-action-buttons {
   display: flex;
@@ -295,7 +296,7 @@ a {
 .delete-trip {
   margin-right: 10px;
 }
-.already-member {
+.already-member, .members-title {
   margin-top: 20px;
 }
 // END TRIP PAGE STYLING

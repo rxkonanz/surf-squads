@@ -10,6 +10,12 @@
     <a href="/surfers/{{surfTrip.creator._id}}"><p>{{surfTrip.creator.username}}</p></a>
     <h6>AirBnb Link:</h6>
     <a href="{{surfTrip.airbnbLink}}" class="airbnb-link">Click Here</a>
+    <h6 class="members-title">Who's All Going:</h6>
+    <ul class="members-list">
+      {{#each surfTrip.members}}
+        <a href="/surfers/{{this._id}}"><li>{{this.fname}} {{this.lname}}</li></a>
+      {{/each}}
+    </ul>
 
     {{#if ownIt}}
       <div class="own-action-buttons">
