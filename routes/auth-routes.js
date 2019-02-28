@@ -102,18 +102,30 @@ authRoutes.get('/trips/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   .then(surfTrip => {
     var currentUserID = req.user._id;
     var theCreator = surfTrip.creator._id;
-    if(String(currentUserID) == String(theCreator)){
-      console.log(surfTrip);
-      res.render('trip', {surfTrip: surfTrip, user: req.user, ownIt: true, joined: false});
+    var tripMembers = surfTrip.members;
+
+    if(tripMembers.length==0){
+      var isEmpty = true;
     }
     else{
-      if(surfTrip.members.includes(req.user.username)){
-        res.render('trip', {surfTrip: surfTrip, user: req.user, ownIt: false, joined: true});
-      }
-      else {
-        res.render('trip', {surfTrip: surfTrip, user: req.user, ownIt: false, joined: false});
-      }
+      var isEmpty = false;
     }
+
+    if(String(currentUserID) == String(theCreator)){
+      var ownIt = true;
+    }
+    else {
+      var ownIt = false;
+    }
+
+    if(surfTrip.members.includes(req.user)){
+      var joined = true;
+    }
+    else {
+      var joined = false;
+    }
+    
+    res.render('trip', {surfTrip, user: req.user, ownIt, joined, isEmpty});
   })
   .catch(error => {
     console.log(error);
@@ -129,7 +141,7 @@ authRoutes.post('/new-trip', ensureLogin.ensureLoggedIn(), uploadCloud.single('p
   const imgPath = req.file.url;
   User.findOne({username: req.user.username})
   .then(currentUser => {
-    Trip.create({title: req.body.tripName, location: req.body.location, description: req.body.description, members:[currentUser], picture: imgPath, creator: currentUser, difficulty: req.body.difficulty, airbnbLink: req.body.airbnbLink, beds:req.body.rooms})
+    Trip.create({title: req.body.tripName, location: req.body.location, description: req.body.description, picture: imgPath, creator: currentUser, difficulty: req.body.difficulty, airbnbLink: req.body.airbnbLink, beds:req.body.rooms})
     .then(idk => {
       res.redirect('/home');
     })
@@ -145,7 +157,7 @@ authRoutes.post('/new-trip', ensureLogin.ensureLoggedIn(), uploadCloud.single('p
 authRoutes.post('/trip/join/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   Trip.update(
     {_id:req.params.id}, 
-    { $push: { members: req.user.username } }
+    { $push: { members: req.user } }
   ).then(mod => {
     res.redirect(`back`);
   });
@@ -166,7 +178,7 @@ authRoutes.get('/owned-trips', ensureLogin.ensureLoggedIn(), (req, res, next) =>
 });
 
 authRoutes.get('/joined-trips', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  Trip.find({members: req.user.username})
+  Trip.find({members: req.user})
   .then(myTrips => {
     res.render('joined-trips', {myTrips, user: req.user});
   })

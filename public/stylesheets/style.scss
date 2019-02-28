@@ -290,14 +290,18 @@ a {
   display: flex;
   margin-top: 20px;
 }
-.visitor-action-button {
-  margin-top: 20px;
-}
 .delete-trip {
   margin-right: 10px;
 }
-.already-member, .members-title {
+.members-title {
   margin-top: 20px;
+}
+.no-members {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.already-member {
+  margin-bottom: 20px;
 }
 // END TRIP PAGE STYLING
 
