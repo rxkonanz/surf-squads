@@ -224,6 +224,9 @@ a {
 .already-member {
   margin-bottom: 20px; }
 
+.member-name {
+  margin-right: 15px; }
+
 .new-trip-container {
   margin: auto;
   width: 60%; }
