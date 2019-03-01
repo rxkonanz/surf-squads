@@ -214,7 +214,14 @@ authRoutes.get('/my-trips', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 authRoutes.get('/surfers/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   User.findOne({_id: req.params.id})
   .then(surfer => {
-    res.render('other-surfer', {surfer});
+    console.log("THESE ARE THE TWO TO COMPARE");
+    if(String(surfer._id)==String(req.user._id)){
+      res.render('other-surfer', {surfer, myself: true});
+    }
+    else {
+      res.render('other-surfer', {surfer, myself: false});
+    }
+    
   })
   .catch(error => {
     console.log(error);

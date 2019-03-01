@@ -7,5 +7,7 @@
   <p>{{surfer.lname}}</p>
   <h6>Email</h6>
   <p>{{surfer.username}}</p>
-  <a href="/send-message/{{surfer._id}}"><button>Email {{surfer.fname}}</button></a>
+  {{#unless myself}}
+    <a href="/send-message/{{surfer._id}}"><button>Email {{surfer.fname}}</button></a>
+  {{/unless}}
 </div>
