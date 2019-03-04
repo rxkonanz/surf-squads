@@ -52,6 +52,11 @@ body.show {
 .site__logo {
   margin-bottom: 2rem; }
 
+.page-description {
+  color: white;
+  margin-top: 15px;
+  text-align: center; }
+
 input {
   border: 0;
   font: inherit; }
